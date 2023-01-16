@@ -13,19 +13,9 @@ using namespace std;
 
 int solution(vector<int> sides) {
     int answer = 0;
-    int longestSide = *max_element(sides.begin(), sides.end());
-    int sumOfOtherSides = 0;
-    bool isFound = false;
+    sort(sides.begin(), sides.end());
 
-    for (const auto& e : sides) {
-        if (e == longestSide) {
-            if (isFound == false) { isFound = true; }
-            else { sumOfOtherSides += e; }
-        }
-        else { sumOfOtherSides += e; }
-    }
-
-    if (longestSide < sumOfOtherSides) { answer = 1; }
+    if (sides[0] + sides[1] > sides[2]) { answer = 1; }
     else { answer = 2; }
     return answer;
 }
